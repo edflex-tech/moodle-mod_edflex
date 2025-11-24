@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<XMLDB PATH="mod/edflex/db" VERSION="20250723" COMMENT="XMLDB file for Moodle edflex"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="../../../lib/xmldb/xmldb.xsd"
+>
+    <TABLES>
+        <TABLE NAME="edflex_scorm" COMMENT="Stores the extra data for edflex scorm activities.">
+            <FIELDS>
+                <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
+                <FIELD NAME="scormid" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false" COMMENT="ID of the associated SCORM activity (if any)" />
+                <FIELD NAME="edflexid" TYPE="char" LENGTH="36" NOTNULL="true" SEQUENCE="false" COMMENT="the ID of the activity inside Edflex" />
+                <FIELD NAME="name" TYPE="char" LENGTH="255" NOTNULL="true" SEQUENCE="false" COMMENT="the name of the activity inside Edflex" />
+                <FIELD NAME="language" TYPE="char" LENGTH="16" NOTNULL="true" SEQUENCE="false" COMMENT="the language of the activity inside Edflex" />
+                <FIELD NAME="difficulty" TYPE="char" LENGTH="32" NOTNULL="true" SEQUENCE="false" COMMENT="the difficulty of the activity inside Edflex" />
+                <FIELD NAME="duration" TYPE="char" LENGTH="32" NOTNULL="true" SEQUENCE="false" COMMENT="the duration of the activity inside Edflex" />
+                <FIELD NAME="author" TYPE="char" LENGTH="512" NOTNULL="true" SEQUENCE="false" COMMENT="the author of the activity inside Edflex" />
+                <FIELD NAME="type" TYPE="char" LENGTH="64" NOTNULL="true" SEQUENCE="false" COMMENT="the type of the activity inside Edflex" />
+                <FIELD NAME="url" TYPE="text" NOTNULL="true" SEQUENCE="false" COMMENT="the url of the activity inside Edflex" />
+                <FIELD NAME="lastsync" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0" SEQUENCE="false" COMMENT="Unix timestamp of last synchronization with the API" />
+            </FIELDS>
+            <KEYS>
+                <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+                <KEY NAME="fk_scorm" TYPE="foreign" FIELDS="scormid" REFTABLE="scorm" REFFIELDS="id"/>
+            </KEYS>
+        </TABLE>
+        <TABLE NAME="edflex_categories" COMMENT="Edflex categories imported from the API (first-level only).">
+            <FIELDS>
+                <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
+                <FIELD NAME="uuid" TYPE="char" LENGTH="36" NOTNULL="true" SEQUENCE="false" COMMENT="API category UUID"/>
+                <FIELD NAME="catalog_uuid" TYPE="char" LENGTH="36" NOTNULL="true" SEQUENCE="false" COMMENT="Edflex catalog UUID"/>
+                <FIELD NAME="parent" TYPE="char" LENGTH="36" NOTNULL="false" SEQUENCE="false" COMMENT="Parent category UUID"/>
+                <FIELD NAME="title" TYPE="char" LENGTH="255" NOTNULL="true" SEQUENCE="false" COMMENT="Default title of the category"/>
+                <FIELD NAME="position" TYPE="int" LENGTH="10" NOTNULL="false" SEQUENCE="false" COMMENT="attributes.position"/>
+                <FIELD NAME="lastsync" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0" SEQUENCE="false" COMMENT="Unix timestamp of last synchronization with the API"/>
+            </FIELDS>
+            <KEYS>
+                <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+            </KEYS>
+            <INDEXES>
+                <INDEX NAME="title" UNIQUE="false" FIELDS="title"/>
+                <INDEX NAME="uuid" UNIQUE="true" FIELDS="uuid"/>
+            </INDEXES>
+        </TABLE>
+        <TABLE NAME="edflex_category_translations" COMMENT="Localized fields for Edflex categories.">
+            <FIELDS>
+                <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
+                <FIELD NAME="category_id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false" COMMENT="Foreign key referencing edflex_categories.id"/>
+                <FIELD NAME="language_code" TYPE="char" LENGTH="5" NOTNULL="true" SEQUENCE="false" COMMENT="Language code (e.g., 'en', 'fr', 'es')"/>
+                <FIELD NAME="title" TYPE="char" LENGTH="255" NOTNULL="true" SEQUENCE="false" COMMENT="Localized title for the category"/>
+            </FIELDS>
+            <KEYS>
+                <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+                <KEY NAME="fk_category" TYPE="foreign" FIELDS="category_id" REFTABLE="edflex_categories" REFFIELDS="id"/>
+            </KEYS>
+            <INDEXES>
+                <INDEX NAME="category_language_index" UNIQUE="true" FIELDS="category_id, language_code"/>
+            </INDEXES>
+        </TABLE>
+    </TABLES>
+</XMLDB>

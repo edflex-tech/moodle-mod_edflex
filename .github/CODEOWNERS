@@ -1,0 +1,8 @@
+# Pattern used to match files follows most of the same rules as used in gitignore files.
+# Order is important; the last matching pattern takes precedence.
+#
+# For more info see:
+# https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+
+# Global
+* @johnny1991 @DamienVauchel @sserot @traezh

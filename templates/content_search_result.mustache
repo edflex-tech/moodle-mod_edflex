@@ -1,0 +1,74 @@
+{{#contents}}
+    <div class="row content-item p-2 border-bottom">
+        <div class="col-sm-2 text-center">
+            {{#image_small}}
+                <img src="{{image_small}}" style="max-width: 100%; max-height: 100%; margin: auto" />
+            {{/image_small}}
+        </div>
+        <div class="col-sm-10">
+            <div class="row">
+                <div class="col-11">
+                    <div>
+                        {{name}}
+                    </div>
+                    <div class="d-flex flex-wrap">
+                        {{#type_formatted}}
+                            <small class="mr-3">
+                                <span class="text-muted">{{#str}} contenttype, mod_edflex {{/str}}:</span> {{type_formatted}}
+                            </small>
+                        {{/type_formatted}}
+                        {{#duration_formatted}}
+                            <small class="mr-3">
+                                <span class="text-muted">{{#str}} duration, mod_edflex {{/str}}:</span> {{duration_formatted}}
+                            </small>
+                        {{/duration_formatted}}
+                        {{#language}}
+                            <small class="mr-3">
+                                <span class="text-muted">{{#str}} language, mod_edflex {{/str}}:</span> {{language}}
+                            </small>
+                        {{/language}}
+
+                        {{#difficulty_formatted}}
+                            <small class="mr-3">
+                                <span class="text-muted">{{#str}} difficulty, mod_edflex {{/str}}:</span> {{difficulty_formatted}}
+                            </small>
+                        {{/difficulty_formatted}}
+
+                        {{#is_in_the_course}}
+                            <span class="badge badge-info">{{#str}} edflexidisinthecourse, mod_edflex {{/str}}</span>
+                        {{/is_in_the_course}}
+                    </div>
+                </div>
+                <div class="col-1 text-right">
+                    <input type="checkbox" {{#is_selected}} checked {{/is_selected}} class="edflex-id {{#is_in_the_course}} confirm {{/is_in_the_course}}" value="{{edflexid}}" />
+                </div>
+            </div>
+        </div>
+    </div>
+{{/contents}}
+
+{{#pages.1}}
+    <nav class="mt-4">
+        <ul class="pagination justify-content-center">
+            {{#pages}}
+                {{#number}}
+                    {{#current}}
+                        <li class="page-item active" aria-current="page">
+                            <span class="page-link">{{title}}</span>
+                        </li>
+                    {{/current}}
+                    {{^current}}
+                        <li class="page-item">
+                            <a class="page-link" data-page="{{number}}" href="#">{{title}}</a>
+                        </li>
+                    {{/current}}
+                {{/number}}
+                {{^number}}
+                    <li class="page-item" aria-current="page">
+                        <span class="page-link">{{title}}</span>
+                    </li>
+                {{/number}}
+            {{/pages}}
+        </ul>
+    </nav>
+{{/pages.1}}

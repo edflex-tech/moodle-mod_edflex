@@ -1,0 +1,56 @@
+<div id="edflex-browser">
+    <div>
+        <div class="mb-3">
+            <input type="text" id="edflex_query" class="form-control" placeholder="{{#str}} keywordssearch, mod_edflex {{/str}}">
+        </div>
+        <div class="row">
+            <div class="col-sm-4 mb-3">
+                <label for="edflex_content_type">{{#str}} contenttype, mod_edflex {{/str}}:</label>
+                <select id="edflex_content_type" class="custom-select select-multiple" multiple data-tags="false">
+                    {{#contenttypes}}
+                        <option value="{{value}}">{{label}}</option>
+                    {{/contenttypes}}
+                </select>
+            </div>
+            <div class="col-sm-4 mb-3">
+                <label for="edflex_content_language">{{#str}} language, mod_edflex {{/str}}:</label>
+                <select id="edflex_content_language" class="custom-select select-multiple" multiple  data-tags="false">
+                    {{#languages}}
+                        <option value="{{value}}">{{label}}</option>
+                    {{/languages}}
+                </select>
+            </div>
+            <div class="col-sm-4 mb-3">
+                <label for="edflex_content_category">{{#str}} category, mod_edflex {{/str}}:</label>
+                <select id="edflex_content_category"
+                        class="custom-select select-multiple"
+                        data-tags="false"
+                >
+                    <option value=""></option>
+                    {{#categories}}
+                        <option value="{{value}}">{{label}}</option>
+                    {{/categories}}
+                </select>
+            </div>
+            <div class="ml-auto col-sm-4 mb-3">
+                <button id="edflexsearchactivities" class="btn btn-primary" style="width: 100%;">{{#str}} search {{/str}}</button>
+            </div>
+        </div>
+    </div>
+    <div style="min-height: 200px;">
+        <div class="edflex-results">
+            <div class="d-none edflex-loading-results my-3 py-5 text-center">
+                <div class="spinner-border" role="status"></div>
+            </div>
+            <div class="d-none edflex-errors text-danger mb-3">{{#str}} searcherror, mod_edflex {{/str}}</div>
+            <div class="d-none edflex-no-results text-muted mb-3">{{#str}} noresults, mod_edflex {{/str}}</div>
+            <div class="d-none edflex-results-list mb-3"></div>
+        </div>
+        <div class="selected-contents"></div>
+    </div>
+    <div class="text-right edflex-results-actions">
+        <a href="javascript://void(0)" class="show-search-result d-none mr-3">{{#str}} viewsearchresult, mod_edflex {{/str}}</a>
+        <a href="javascript://void(0)" class="show-selected-contents d-none mr-3">{{#str}} viewselectedcontents, mod_edflex {{/str}}</a>
+        <button class="btn btn-primary edflex-import-activities d-none">{{#str}} importcontents, mod_edflex,  {{/str}}</button>
+    </div>
+</div>
