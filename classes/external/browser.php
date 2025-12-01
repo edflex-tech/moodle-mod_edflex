@@ -89,7 +89,10 @@ class browser extends external_api {
      * @throws moodle_exception If the course parameter is not provided or invalid.
      */
     public static function search(array $filters, int $course, int $page = 1, ?client $client = null): array {
-        require_capability('mod/edflex:addinstance', context_system::instance());
+        $context = context_system::instance();
+        self::validate_context($context);
+        require_capability('mod/edflex:addinstance', $context);
+
         $data = compact('filters', 'course', 'page');
         $data = self::validate_parameters(self::search_parameters(), $data);
         $filters = $data['filters'];
@@ -177,7 +180,10 @@ class browser extends external_api {
      */
     public static function html(): array {
         global $OUTPUT;
-        require_capability('mod/edflex:addinstance', context_system::instance());
+
+        $context = context_system::instance();
+        self::validate_context($context);
+        require_capability('mod/edflex:addinstance', $context);
 
         return [
             'success' => true,

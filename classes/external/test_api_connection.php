@@ -59,7 +59,9 @@ class test_api_connection extends external_api {
      * Executes the function to request an access token using the provided API URL, client ID, and client secret.
      */
     public static function execute(string $apiurl, string $clientid, string $clientsecret, ?client $client = null): array {
-        require_capability('moodle/site:config', context_system::instance());
+        $context = context_system::instance();
+        self::validate_context($context);
+        require_capability('moodle/site:config', $context);
 
         $data = compact('apiurl', 'clientid', 'clientsecret');
         $data = self::validate_parameters(self::execute_parameters(), $data);
