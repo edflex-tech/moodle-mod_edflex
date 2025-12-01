@@ -55,9 +55,9 @@ if ($ADMIN->fulltree) {
         'mod_edflex/testconnectionheading',
         '',
         '<div id="mod_edflex_button_container" style="margin-left: 1em;">
-            <button type="button" class="btn btn-secondary" id="mod_edflex_test_api_connection_btn">
-                Test API Connection
-            </button>
+            <button type="button" class="btn btn-secondary" id="mod_edflex_test_api_connection_btn">' .
+                get_string('testconnection', 'mod_edflex') .
+            '</button>
             <span id="mod_edflex_connection_status" style="margin-left: 1em;"></span>
         </div>'
     ));

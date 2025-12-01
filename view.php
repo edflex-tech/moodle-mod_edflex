@@ -30,5 +30,5 @@ $course = $DB->get_record('course', ['id' => $cm->course], '*', MUST_EXIST);
 require_login($course, true, $cm);
 
 echo $OUTPUT->header();
-echo $OUTPUT->heading('Edflex is just a wrapper for SCORM activities!');
+echo $OUTPUT->heading(get_string('outputheading', 'mod_edflex'));
 echo $OUTPUT->footer();
