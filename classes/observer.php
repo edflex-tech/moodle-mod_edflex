@@ -40,6 +40,8 @@ use moodle_exception;
 class observer {
     /**
      * Event listener for \core\event\config_log_created
+     *
+     * @param config_log_created $event The config log created event.
      */
     public static function config_changed(config_log_created $event): void {
         $data = $event->get_data();
@@ -56,6 +58,9 @@ class observer {
 
     /**
      * Event listener for \core\event\course_module_deleted
+     *
+     * @param course_module_deleted $event The course module deleted event.
+     * @param ?activity_manager $activitymanager The activity manager instance.
      */
     public static function course_module_deleted(course_module_deleted $event, ?activity_manager $activitymanager = null) {
         try {
@@ -82,6 +87,8 @@ class observer {
 
     /**
      * Creates or deletes an ad-hoc task to synchronize categories based on the API connection status.
+     *
+     * @param ?client $client The client instance.
      */
     public static function create_or_delete_adhoc_synchronize_categories_task(?client $client = null): void {
         global $DB;

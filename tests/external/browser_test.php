@@ -115,6 +115,8 @@ final class browser_test extends advanced_testcase {
 
     /**
      * Create a user and assign a capability
+     *
+     * @param string $capability The capability.
      */
     private function assign_capability(string $capability): void {
         $user = $this->getDataGenerator()->create_user();

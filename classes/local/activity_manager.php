@@ -47,6 +47,12 @@ class activity_manager {
 
     /**
      * Imports multiple Edflex contents to Moodle
+     *
+     * @param array $edflexcontents The Edflex contents to import.
+     * @param int $course The course ID.
+     * @param int $section The section ID.
+     *
+     * @return array The results of the import.
      */
     public function import_contents(array $edflexcontents, int $course, int $section): array {
         $results = [];
@@ -60,6 +66,12 @@ class activity_manager {
 
     /**
      * Imports an activity from Edflex in the course
+     *
+     * @param array $datafromedflex The Edflex content to import.
+     * @param int $courseid The course ID.
+     * @param int $section The section ID.
+     *
+     * @return array The result of the import.
      */
     public function import_content(array $datafromedflex, int $courseid, int $section = 0): array {
         global $CFG, $DB;
@@ -395,6 +407,7 @@ class activity_manager {
      * Retrieves Edflex records and their corresponding SCORM records by content IDs.
      *
      * @param array $contentids The list of content IDs to fetch associated Edflex records for.
+     * @param int $batchsize The batch size.
      *
      * @return Generator Yields arrays containing Edflex records from the 'edflex_scorm' table
      *                   and their matching SCORM records from the 'scorm' table if present.

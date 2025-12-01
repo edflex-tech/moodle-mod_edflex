@@ -57,6 +57,13 @@ class test_api_connection extends external_api {
 
     /**
      * Executes the function to request an access token using the provided API URL, client ID, and client secret.
+     *
+     * @param string $apiurl The API URL.
+     * @param string $clientid The client ID.
+     * @param string $clientsecret The client secret.
+     * @param ?client $client The client instance.
+     *
+     * @return array The result of the test.
      */
     public static function execute(string $apiurl, string $clientid, string $clientsecret, ?client $client = null): array {
         $context = context_system::instance();

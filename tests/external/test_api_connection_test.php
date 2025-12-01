@@ -114,8 +114,12 @@ final class test_api_connection_test extends advanced_testcase {
      * Test invalid parameters for the method test_api_connection::execute
      *
      * @dataProvider provide_test_execute_with_invalid_parameters_data
+     *
+     * @param string $apiurl The API URL.
+     * @param string $clientid The client ID.
+     * @param string $clientsecret The client secret.
      */
-    public function test_execute_with_invalid_parameters($apiurl, $clientid, $clientsecret): void {
+    public function test_execute_with_invalid_parameters(string $apiurl, string $clientid, string $clientsecret): void {
         $this->expectException(moodle_exception::class);
         $this->assign_capability('moodle/site:config');
 
@@ -135,6 +139,8 @@ final class test_api_connection_test extends advanced_testcase {
 
     /**
      * Create a user and assign a capability
+     *
+     * @param string $capability The capability.
      */
     private function assign_capability(string $capability): void {
         $user = $this->getDataGenerator()->create_user();

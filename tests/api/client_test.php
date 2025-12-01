@@ -65,6 +65,9 @@ final class client_test extends advanced_testcase {
     /**
      * Helper to call the private method via reflection.
      *
+     * @param client $client The client instance.
+     * @param string $method The method name.
+     *
      * @throws ReflectionException
      */
     private function invoke_client_method(client $client, string $method): void {
@@ -78,6 +81,9 @@ final class client_test extends advanced_testcase {
      * Tests the deletion of an access token from the cache if it is expired.
      *
      * @dataProvider provide_test_delete_access_token_from_cache_if_expired_data
+     *
+     * @param array $token The access token.
+     * @param bool $expired True if the access token is expired, false otherwise.
      *
      * @throws ReflectionException
      */
@@ -221,6 +227,10 @@ final class client_test extends advanced_testcase {
 
     /**
      * Tests the constructor of the client class with invalid parameters.
+     *
+     * @param string $clientid The client ID.
+     * @param string $clientsecret The client secret.
+     * @param string $apiurl The API URL.
      *
      * @dataProvider provide_constructor_invalid_parameters_data
      */
@@ -382,6 +392,11 @@ final class client_test extends advanced_testcase {
     /**
      * Test parse_response method with successful JSON responses
      *
+     * @param string $rawresponse The raw response.
+     * @param array $responseinfo The response info.
+     * @param bool $expectedjson True if the response is expected to be JSON, false otherwise.
+     * @param array $expected The expected result.
+     *
      * @dataProvider provide_parse_response_success_json_data
      */
     public function test_parse_response_success_json(
@@ -417,6 +432,11 @@ final class client_test extends advanced_testcase {
 
     /**
      * Test parse_response method with error responses
+     *
+     * @param string $rawresponse The raw response.
+     * @param array $responseinfo The response info.
+     * @param bool $expectedjson True if the response is expected to be JSON, false otherwise.
+     * @param string $expectedexceptionmessage The expected exception message.
      *
      * @dataProvider provide_parse_response_error_data
      */
@@ -454,6 +474,10 @@ final class client_test extends advanced_testcase {
 
     /**
      * Test get_contents method with various filters
+     *
+     * @param array $filters The filters.
+     * @param array $expectedparams The expected parameters.
+     * @param array $apiresponse The API response.
      *
      * @dataProvider provide_get_contents_filters_data
      */
@@ -532,6 +556,10 @@ final class client_test extends advanced_testcase {
 
     /**
      * Test get_contents with contentIds filter
+     *
+     * @param array $contentids The content IDs.
+     * @param string $expectedcontentids The expected content IDs.
+     * @param bool $shouldthrow True if the method should throw an exception, false otherwise.
      *
      * @dataProvider provide_get_contents_contentids_data
      */
@@ -646,6 +674,9 @@ final class client_test extends advanced_testcase {
     /**
      * Test build_error_message_from_response method
      *
+     * @param array $errors The errors.
+     * @param string $expectedmessage The expected message.
+     *
      * @dataProvider provide_build_error_message_from_response_data
      */
     public function test_build_error_message_from_response(
@@ -676,6 +707,9 @@ final class client_test extends advanced_testcase {
 
     /**
      * Test build_error_message_from_response with missing fields
+     *
+     * @param array $errors The errors.
+     * @param string $expectedmessage The expected message.
      *
      * @dataProvider provide_build_error_message_missing_fields_data
      */
@@ -944,6 +978,9 @@ final class client_test extends advanced_testcase {
     /**
      * Test get_scorm with valid URLs
      *
+     * @param string $scormurl The SCORM URL.
+     * @param string $expectedresponse The expected response.
+     *
      * @dataProvider provide_get_scorm_valid_urls_data
      */
     public function test_get_scorm_valid_urls(
@@ -978,6 +1015,8 @@ final class client_test extends advanced_testcase {
     /**
      * Test get_scorm with invalid URLs
      *
+     * @param string $scormurl The SCORM URL.
+     *
      * @dataProvider provide_get_scorm_invalid_urls_data
      */
     public function test_get_scorm_invalid_urls(string $scormurl): void {
@@ -997,6 +1036,10 @@ final class client_test extends advanced_testcase {
 
     /**
      * Test get_scorm with API error responses
+     *
+     * @param int $httpcode The HTTP code.
+     * @param string $errorresponse The error response.
+     * @param string $expectedexception The expected exception.
      *
      * @dataProvider provide_get_scorm_error_responses_data
      */
@@ -1129,6 +1172,9 @@ final class client_test extends advanced_testcase {
 
     /**
      * Test can_connect_to_the_api with failed connection
+     *
+     * @param string $response The response.
+     * @param int $httpcode The HTTP code.
      *
      * @dataProvider provide_can_connect_to_the_api_failure_data
      */
@@ -1422,6 +1468,10 @@ final class client_test extends advanced_testcase {
 
     /**
      * Test get_catalogs with API error
+     *
+     * @param int $httpcode The HTTP code.
+     * @param string $errorresponse The error response.
+     * @param string $expectedexception The expected exception.
      *
      * @dataProvider provide_get_catalogs_error_data
      */

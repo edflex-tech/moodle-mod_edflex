@@ -30,6 +30,10 @@ global $CFG;
 
 /**
  * Return if the plugin supports $feature.
+ *
+ * @param string $feature The feature.
+ *
+ * @return mixed True if module supports feature, null if doesn't know
  */
 function edflex_supports($feature) {
     return null;
@@ -37,6 +41,11 @@ function edflex_supports($feature) {
 
 /**
  * Adds a new instance of the edflex module.
+ *
+ * @param object $moduleinstance The module instance.
+ * @param mod_page_mod_form $mform The form.
+ *
+ * @return bool
  */
 function edflex_add_instance($moduleinstance, $mform = null) {
     return false;
@@ -44,6 +53,11 @@ function edflex_add_instance($moduleinstance, $mform = null) {
 
 /**
  * Updates an existing instance of the edflex module.
+ *
+ * @param object $moduleinstance The module instance.
+ * @param mod_page_mod_form $mform The form.
+ *
+ * @return bool
  */
 function edflex_update_instance($moduleinstance, $mform = null) {
     return false;
@@ -51,6 +65,10 @@ function edflex_update_instance($moduleinstance, $mform = null) {
 
 /**
  * Removes an instance of the mod_edflex from the database.
+ *
+ * @param int $id The instance id.
+ *
+ * @return bool
  */
 function edflex_delete_instance($id) {
     return false;
@@ -60,6 +78,10 @@ function edflex_delete_instance($id) {
 
 /**
  * Extends the course navigation with additional functionality for the edflex module.
+ *
+ * @param object $navigation The navigation node.
+ * @param object $course The course.
+ * @param object $context The context.
  */
 function mod_edflex_extend_navigation_course($navigation, $course, $context) {
     mod_edflex_inject_browser_javascript();

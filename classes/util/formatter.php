@@ -51,6 +51,10 @@ class formatter {
 
     /**
      * Returns the translated label for a content type slug.
+     *
+     * @param ?string $type The content type slug.
+     *
+     * @return string The translated label.
      */
     public static function format_type(?string $type): string {
         if (!$type) {
@@ -68,6 +72,10 @@ class formatter {
 
     /**
      * Returns the translated label for difficulty slug.
+     *
+     * @param ?string $difficulty The difficulty slug.
+     *
+     * @return string The translated label.
      */
     public static function format_difficulty(?string $difficulty): string {
         if (!$difficulty) {

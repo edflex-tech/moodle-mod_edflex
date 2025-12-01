@@ -32,6 +32,7 @@ use mod_edflex\api\client;
 use moodle_exception;
 use phpunit_util;
 use ReflectionClass;
+use ReflectionException;
 
 /**
  * Unit tests for mod_edflex\local\activity_manager
@@ -334,6 +335,12 @@ final class activity_manager_test extends advanced_testcase {
      * Test get_modified_records triggers SCORM download when name changes
      *
      * @dataProvider provide_get_modified_records_download_triggers_data
+     *
+     * @param array $originaldata The original data.
+     * @param array $newdata The new data.
+     * @param bool $shoulddownload True if the SCORM should be downloaded, false otherwise.
+     *
+     * @throws ReflectionException
      */
     public function test_get_modified_records_download_triggers(
         array $originaldata,

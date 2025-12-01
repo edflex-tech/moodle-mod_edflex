@@ -43,6 +43,8 @@ class edflex_scorm implements renderable, templatable {
 
     /**
      * Class constructor.
+     *
+     * @param stdClass $edflexscormmetadata The edflex scorm file metadata.
      */
     public function __construct(stdClass $edflexscormmetadata) {
         $this->edflexscorm = $edflexscormmetadata;

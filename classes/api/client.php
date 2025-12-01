@@ -71,6 +71,12 @@ class client {
 
     /**
      * Constructor
+     *
+     * @param string $clientid The client ID.
+     * @param string $clientsecret The client secret.
+     * @param string $apiurl The API URL.
+     * @param curl $curl The cURL instance.
+     * @param cache $cache The cache instance.
      */
     public function __construct(
         string $clientid,
@@ -344,6 +350,13 @@ class client {
      * This method sends a GET request to the categories API endpoint to fetch the categories
      * associated with a specific catalog. It uses the access token for authorization and expects
      * a properly formatted response in JSON. If the response is invalid, an exception will be thrown.
+     *
+     * @param string $catalogid The catalog ID.
+     * @param array $filters The filters to apply to the categories.
+     * @param int $page The page number.
+     * @param int $perpage The number of categories per page.
+     *
+     * @return array The list of categories.
      */
     public function get_categories(
         string $catalogid,

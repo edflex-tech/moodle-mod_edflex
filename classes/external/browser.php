@@ -205,6 +205,11 @@ class browser extends external_api {
 
     /**
      * Build pages for navigation.
+     *
+     * @param int $page The current page.
+     * @param bool $hasnext Whether there is a next page.
+     *
+     * @return array The searched pages.
      */
     private static function get_search_pages(int $page, bool $hasnext = false): array {
         $pages = [];

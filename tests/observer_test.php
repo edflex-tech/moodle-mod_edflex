@@ -54,6 +54,9 @@ final class observer_test extends advanced_testcase {
      *
      * @covers \mod_edflex\observer::config_changed
      * @dataProvider provide_test_access_token_is_deleted_from_cache_when_config_is_changed_data
+     *
+     * @param string $modulename The module name.
+     * @param bool $accesstokenmustbedeleted True if the access token must be deleted, false otherwise.
      */
     public function test_access_token_is_deleted_from_cache_when_config_is_changed(
         string $modulename,
