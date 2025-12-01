@@ -574,7 +574,7 @@ final class client_test extends advanced_testcase {
 
         if ($shouldthrow) {
             $this->expectException(moodle_exception::class);
-            $this->expectExceptionMessage('invalidcontentid');
+            $this->expectExceptionMessage('Invalid content ID');
         } else {
             $expectedparams = [
                 'page' => ['number' => 1, 'size' => 50],
@@ -1029,7 +1029,7 @@ final class client_test extends advanced_testcase {
         $client = new client('ci', 'cs', 'https://e.test', $curl, $cache);
 
         $this->expectException(moodle_exception::class);
-        $this->expectExceptionMessage('invalidscormurlprovided');
+        $this->expectExceptionMessage('Invalid SCORM URL provided');
 
         $client->get_scorm($scormurl);
     }
