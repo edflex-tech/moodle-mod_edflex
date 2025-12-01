@@ -10,7 +10,7 @@ import {get_strings as getStrings} from 'core/str';
  */
 
 export const init = () => {
-    document.body.addEventListener('click', async (e) => {
+    document.body.addEventListener('click', async(e) => {
         if (e.target && e.target.id === 'mod_edflex_test_api_connection_btn') {
             const [successMessage, errorMessage] = await getStrings([
                 {key: 'apiconnectionsuccess', component: 'mod_edflex'},
@@ -24,7 +24,7 @@ export const init = () => {
             const clientid = document.getElementById('id_s_mod_edflex_clientid')?.value || '';
             const clientsecret = document.getElementById('id_s_mod_edflex_clientsecret')?.value || '';
 
-            const args = { apiurl, clientid, clientsecret };
+            const args = {apiurl, clientid, clientsecret};
 
             const xhr = Ajax.call([{
                 methodname: 'mod_edflex_test_api_connection',

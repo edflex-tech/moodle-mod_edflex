@@ -75,7 +75,7 @@ export default class BrowserComponent extends BaseComponent {
                             const input = wrapper?.querySelector('input.form-control[data-fieldtype="autocomplete"]');
                             if (input) {
                                 input.value = '';
-                                input.dispatchEvent(new Event('input', { bubbles: true }));
+                                input.dispatchEvent(new Event('input', {bubbles: true}));
                             }
                         });
                     })

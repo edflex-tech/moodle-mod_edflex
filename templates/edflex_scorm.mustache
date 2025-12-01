@@ -22,6 +22,19 @@
   @license    https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
 }}
 
+{{!
+    @template mod_edflex/edflex_scorm
+
+    Example context (json):
+    {
+        "type_formatted": "Video",
+        "difficulty_formatted": "Beginner",
+        "language": "English",
+        "duration_formatted": "1h 30m",
+        "author": "John Doe"
+    }
+}}
+
 <div class="edflex-scorm">
     <div>{{#str}}contenttype, mod_edflex{{/str}}: {{type_formatted}}</div>
     <div>{{#str}}difficulty, mod_edflex{{/str}}: {{difficulty_formatted}}</div>

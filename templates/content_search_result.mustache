@@ -22,6 +22,26 @@
   @license    https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
 }}
 
+{{!
+    @template mod_edflex/content_search_result
+
+    Example context (json):
+    {
+        "contents": [
+            {
+                "edflexid": "1",
+                "name": "Content 1",
+                "image_small": "https://example.com/image.jpg",
+                "type_formatted": "Video",
+                "duration_formatted": "1h 30m",
+                "language": "English",
+                "difficulty_formatted": "Beginner",
+                "is_in_the_course": true
+            }
+        ]
+    }
+}}
+
 {{#contents}}
     <div class="row content-item p-2 border-bottom">
         <div class="col-sm-2 text-center">
