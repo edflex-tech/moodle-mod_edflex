@@ -1,6 +1,14 @@
 import Ajax from 'core/ajax';
 import {get_strings as getStrings} from 'core/str';
 
+/**
+ * Tests the connection to the Edflex API.
+ *
+ * @package     mod_edflex
+ * @copyright   2025 Edflex <support@edflex.com>
+ * @license     https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
+
 export const init = () => {
     document.body.addEventListener('click', async (e) => {
         if (e.target && e.target.id === 'mod_edflex_test_api_connection_btn') {

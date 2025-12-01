@@ -3,6 +3,14 @@ import ModalEvents from "core/modal_events";
 import {exception} from 'core/notification';
 import BrowserComponent from './browsercomponent';
 
+/**
+ * Initializes and displays the activity modal with the provided course data.
+ *
+ * @package     mod_edflex
+ * @copyright   2025 Edflex <support@edflex.com>
+ * @license     https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
+
 export const init = () => {
     document.body.addEventListener('click', (e) => {
         if (e.target.closest('[name="openedflexbrowser"]')) {

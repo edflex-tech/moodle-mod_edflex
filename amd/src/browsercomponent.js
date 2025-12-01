@@ -4,6 +4,14 @@ import Ajax from 'core/ajax';
 import Templates from 'core/templates';
 import Autocomplete from "core/form-autocomplete";
 
+/**
+ * Browser component
+ *
+ * @package     mod_edflex
+ * @copyright   2025 Edflex <support@edflex.com>
+ * @license     https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
+
 export default class BrowserComponent extends BaseComponent {
     showselectedcontents = false;
     coursedata = {};
