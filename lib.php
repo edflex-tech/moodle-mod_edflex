@@ -71,7 +71,15 @@ function edflex_update_instance($moduleinstance, $mform = null) {
  * @return bool
  */
 function edflex_delete_instance($id) {
-    return false;
+    global $DB;
+
+    if (!$DB->get_record('edflex', ['id' => $id])) {
+        return false;
+    }
+
+    $DB->delete_records('edflex', ['id' => $id]);
+
+    return true;
 }
 
 
