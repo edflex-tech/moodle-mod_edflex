@@ -25,7 +25,7 @@
 defined('MOODLE_INTERNAL') || die();
 
 $plugin->component = 'mod_edflex';
-$plugin->release = 'v1.0.0';
+$plugin->release = 'v1.0.1';
 $plugin->version = 2026062400;
 $plugin->requires = 2022041900;
 $plugin->maturity = MATURITY_STABLE;
