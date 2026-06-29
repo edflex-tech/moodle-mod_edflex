@@ -26,8 +26,26 @@ require_once(__DIR__ . '/../../config.php');
 $id = required_param('id', PARAM_INT);
 $cm = get_coursemodule_from_id('edflex', $id, 0, false, MUST_EXIST);
 $course = $DB->get_record('course', ['id' => $cm->course], '*', MUST_EXIST);
+$moduleinstance = $DB->get_record('edflex', ['id' => $cm->instance], '*', MUST_EXIST);
 
 require_login($course, true, $cm);
+
+$context = context_module::instance($cm->id);
+require_capability('mod/edflex:view', $context);
+
+$PAGE->set_url('/mod/edflex/view.php', ['id' => $cm->id]);
+$PAGE->set_title(format_string($moduleinstance->name));
+$PAGE->set_heading(format_string($course->fullname));
+$PAGE->set_context($context);
+
+$event = \mod_edflex\event\course_module_viewed::create([
+    'objectid' => $moduleinstance->id,
+    'context' => $context,
+]);
+$event->add_record_snapshot('course', $course);
+$event->add_record_snapshot('course_modules', $cm);
+$event->add_record_snapshot('edflex', $moduleinstance);
+$event->trigger();
 
 echo $OUTPUT->header();
 echo $OUTPUT->heading(get_string('outputheading', 'mod_edflex'));

@@ -36,7 +36,14 @@ global $CFG;
  * @return mixed True if module supports feature, null if doesn't know
  */
 function edflex_supports($feature) {
-    return null;
+    switch ($feature) {
+        case FEATURE_MOD_INTRO:
+        case FEATURE_SHOW_DESCRIPTION:
+        case FEATURE_BACKUP_MOODLE2:
+            return true;
+        default:
+            return null;
+    }
 }
 
 /**
@@ -48,6 +55,8 @@ function edflex_supports($feature) {
  * @return bool
  */
 function edflex_add_instance($moduleinstance, $mform = null) {
+    // mod_edflex is a launcher only: the form spawns SCORM modules via the
+    // Edflex browser, so no standalone edflex instance is ever persisted.
     return false;
 }
 
