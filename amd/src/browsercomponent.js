@@ -158,7 +158,6 @@ export default class BrowserComponent extends BaseComponent {
             if (e.target.matches(self.selectors.RESULT_CHECKBOX)) {
                 const checkbox = e.target;
                 if (checkbox.checked && checkbox.classList.contains('confirm')) {
-                    // eslint-disable-next-line no-alert
                     const ok = confirm(M.util.get_string('confirmsameactivitymultipletimesinthecourse', 'mod_edflex'));
 
                     if (!ok) {
@@ -345,7 +344,7 @@ export default class BrowserComponent extends BaseComponent {
             empty.classList.remove('d-none');
         } else {
             contents = contents.map((item) => {
-                item.is_selected = selectedcontents[item.edflexid] || false; // eslint-disable-line camelcase
+                item.is_selected = selectedcontents[item.edflexid] || false;
 
                 return item;
             });
@@ -375,7 +374,7 @@ export default class BrowserComponent extends BaseComponent {
             empty.classList.remove('d-none');
         } else {
             self.selectedcontents.map((item) => {
-                item.is_selected = true; // eslint-disable-line camelcase
+                item.is_selected = true;
                 return item;
             });
 

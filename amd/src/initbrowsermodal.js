@@ -27,7 +27,7 @@ import {exception} from 'core/notification';
 import BrowserComponent from './browsercomponent';
 
 export const init = () => {
-    document.body.addEventListener('click', (e) => { // eslint-disable-line consistent-return
+    document.body.addEventListener('click', (e) => {
         if (e.target.closest('[name="openedflexbrowser"]')) {
             e.preventDefault();
             const url = new URL(window.location);
