@@ -55,7 +55,7 @@ function edflex_supports($feature) {
  * @return bool
  */
 function edflex_add_instance($moduleinstance, $mform = null) {
-    // mod_edflex is a launcher only: the form spawns SCORM modules via the
+    // The mod_edflex form is a launcher: it spawns SCORM modules via the
     // Edflex browser, so no standalone edflex instance is ever persisted.
     return false;
 }

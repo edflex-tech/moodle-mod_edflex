@@ -24,8 +24,6 @@
 
 namespace mod_edflex\event;
 
-defined('MOODLE_INTERNAL') || die();
-
 /**
  * The mod_edflex course module viewed event class.
  *
@@ -34,7 +32,6 @@ defined('MOODLE_INTERNAL') || die();
  * @license     https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class course_module_viewed extends \core\event\course_module_viewed {
-
     /**
      * Init method.
      *

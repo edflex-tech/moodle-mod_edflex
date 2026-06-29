@@ -34,7 +34,6 @@ require_once($CFG->dirroot . '/mod/edflex/backup/moodle2/backup_edflex_stepslib.
  * @license     https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class backup_edflex_activity_task extends backup_activity_task {
-
     /**
      * Defines particular settings for this activity task. None required.
      *
