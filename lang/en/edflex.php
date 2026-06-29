@@ -60,6 +60,7 @@ $string['difficultyintroductive'] = 'Introductive';
 $string['downloadscormzipmissing'] = 'Scorm download URL is missing';
 $string['duration'] = 'Duration';
 $string['edflex:addinstance'] = 'Add a new Edflex activity';
+$string['edflex:view'] = 'View Edflex activity';
 $string['edflexbrowserloading'] = 'Loading...';
 $string['edflexbrowsertitle'] = 'Browse Edflex Contents';
 $string['edflexcontentidinvalid'] = 'Edflex content ID invalid';

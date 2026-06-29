@@ -15,20 +15,40 @@
 // along with Moodle.  If not, see <https://www.gnu.org/licenses/>.
 
 /**
- * Plugin version and other meta-data are defined here.
+ * The mod_edflex course module viewed event.
  *
  * @package     mod_edflex
  * @copyright   2025 Edflex <support@edflex.com>
  * @license     https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-defined('MOODLE_INTERNAL') || die();
+namespace mod_edflex\event;
 
-$plugin->component = 'mod_edflex';
-$plugin->release = 'v1.0.2';
-$plugin->version = 2026062900;
-$plugin->requires = 2022041900;
-$plugin->maturity = MATURITY_STABLE;
-$plugin->dependencies = [
-    'mod_scorm' => ANY_VERSION,
-];
+/**
+ * The mod_edflex course module viewed event class.
+ *
+ * @package     mod_edflex
+ * @copyright   2025 Edflex <support@edflex.com>
+ * @license     https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
+class course_module_viewed extends \core\event\course_module_viewed {
+    /**
+     * Init method.
+     *
+     * @return void
+     */
+    protected function init() {
+        $this->data['crud'] = 'r';
+        $this->data['edulevel'] = self::LEVEL_PARTICIPATING;
+        $this->data['objecttable'] = 'edflex';
+    }
+
+    /**
+     * Returns the mapping used by restore to remap the objectid.
+     *
+     * @return array The objectid mapping.
+     */
+    public static function get_objectid_mapping() {
+        return ['db' => 'edflex', 'restore' => 'edflex'];
+    }
+}
