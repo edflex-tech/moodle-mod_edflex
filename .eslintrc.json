@@ -1,0 +1,7 @@
+{
+    "rules": {
+        "no-alert": "off",
+        "consistent-return": "off",
+        "camelcase": "off"
+    }
+}

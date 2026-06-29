@@ -216,12 +216,10 @@ class activity_manager {
                     INNER JOIN {scorm} s ON s.id = es.scormid
                     INNER JOIN {course_modules} cm ON cm.instance = s.id AND cm.deletioninprogress = 0
                     WHERE es.lastsync < :maxlastsync
-                    ORDER BY es.lastsync, es.id
+                    ORDER BY es.edflexid
                     LIMIT $chunksize OFFSET $offset
                 ",
                 [
-                    'limit' => $chunksize,
-                    'offset' => $offset,
                     'maxlastsync' => $maxlastsync,
                 ]
             );
