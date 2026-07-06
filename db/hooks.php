@@ -15,7 +15,7 @@
 // along with Moodle.  If not, see <https://www.gnu.org/licenses/>.
 
 /**
- * Plugin version and other meta-data are defined here.
+ * Hook callbacks.
  *
  * @package     mod_edflex
  * @copyright   2025 Edflex <support@edflex.com>
@@ -24,11 +24,9 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->component = 'mod_edflex';
-$plugin->release = 'v1.0.3';
-$plugin->version = 2026070600;
-$plugin->requires = 2022041900;
-$plugin->maturity = MATURITY_STABLE;
-$plugin->dependencies = [
-    'mod_scorm' => ANY_VERSION,
+$callbacks = [
+    [
+        'hook' => \core\hook\output\before_footer_html_generation::class,
+        'callback' => \mod_edflex\hook_callbacks::class . '::before_footer_html_generation',
+    ],
 ];

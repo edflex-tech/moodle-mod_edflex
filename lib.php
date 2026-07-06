@@ -142,20 +142,13 @@ function mod_edflex_inject_browser_javascript() {
 }
 
 /**
- * Render additional content before the footer in SCORM module pages.
+ * Legacy before_footer callback for Moodle < 4.4.
  *
- * Checks if the current course module is a SCORM activity and retrieves
- * associated edflex information from the database. If a record is found,
- * it outputs the rendered content using the appropriate renderer.
+ * On Moodle 4.4+ the {@see \core\hook\output\before_footer_html_generation} hook
+ * registered in db/hooks.php supersedes this and this function is not called.
+ *
+ * @return string|null
  */
 function mod_edflex_before_footer() {
-    global $PAGE, $DB, $OUTPUT;
-
-    if ($PAGE->cm && $PAGE->cm->modname === 'scorm') {
-        $scormid = $PAGE->cm->instance;
-
-        if ($edflex = $DB->get_record('edflex_scorm', ['scormid' => $scormid])) {
-            echo $OUTPUT->render(new edflex_scorm($edflex));
-        }
-    }
+    return \mod_edflex\hook_callbacks::scorm_footer_html();
 }
